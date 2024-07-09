@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+    <!-- 
+        AREA DE DATOS BASICOS: combobox de categoría, combobox de producto y cantidad.
+        El Combobox de Producto se carga dependiendo del valor el Combobox de Categoría,
+        para ello se usa jquery y ajax.
+        (VER COMENTARIO "COMBOBOX DEPENDIENTES PARA CATEGORIA Y PRODUCTO" en bodega.js)
+    -->
+
+
+
+    <form id="form" method="POST">
+        <div class="row d-flex justify-content-center">
+        {% csrf_token %}
+
+
+        <div class="col-sm-12 col-md-4">
+        {{ form|as_bootstrap_form }}
+        </div>
+
+        <img id="cuadro-imagen" src="{% static 'core/img/sin-imagen.png' %}">
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 col-md-4">
+    <input class="btn btn-primary " type="submit" value="Guardar">
+    <button class="btn btn-primary" type="reset" id="limpiar_formulario"> Nuevo </button>
+</div></div>
+</form>
+
+    <!-- AREA DE TABLA DE PRODUCTOS -->
+
+    {% if productos %}
+
+        
+        
+        <table id="tabla-principal" class="table table-hover">
+            <thead>
+                <!-- AREA DE TITULOS DE LA TABLA -->
+                <tr>
+                    <th>ID</th>
+                    <th>Categoria</th>
+                    <th>Producto</th>
+                    <th>Estado</th>
+                    <th> Imagen </th>
+                    <th> Acción </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- AREA DE FILAS DE PRODUCTOS -->
+                
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.bodega_id }}</td>
+                        <td>{{ producto.nombre_categoria }}</td>
+                        <td>{{ producto.nombre_producto}}</td>
+                        <td>{{ producto.estado}}</td>
+                        <td>
+                            <img src="/media/{{ producto.imagen }}" class="producto-sm" alt="">
+                        </td>
+                        <!-- Botón de eliminar producto de bodega, se activa sólo para productos no vendidos -->
+                        <td>
+                            {% if producto.estado == 'En bodega' %}
+                                <a href="{% url 'eliminar_producto_en_bodega' producto.bodega_id %}" 
+                                    class="btn btn-danger btn-sm"> Eliminar </a>
+                            {% else %}
+                                <a href="{% url 'eliminar_producto_en_bodega' producto.bodega_id %}" 
+                                    class="btn btn-primary btn-sm disabled"> Eliminar </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+{% endblock content %}
+
+{% block script %}
+    <input type="hidden" id="url_obtener_productos" value="{% url 'obtener_productos' %}">
+    <script src="{% static 'core/js/bodega.js' %}"></script>
+{% endblock script %}

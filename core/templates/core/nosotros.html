@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+  
+<div class="nosotros_alejar">
+  <h1>NOSOTROS</h1>
+  <p>
+    Desde el momento en que pones un pie dentro de MPlay, te sumerges en un ambiente vibrante y acogedor.
+    Los brillantes estantes están repletos de los últimos lanzamientos y clásicos atemporales,
+    cada uno listo para transportarte a mundos fantásticos llenos de aventuras emocionantes y desafíos ingeniosos.
+  </p>
+  <p>
+    Además de ofrecer una amplia gama de videojuegos para todas las consolas populares,
+    MPlay también cuenta con accesorios de alta calidad que mejoran tu experiencia de juego,
+    desde auriculares con sonido envolvente hasta cómodas sillas gaming que te mantienen cómodo durante largas sesiones de juego.
+  </p>
+  <p>
+    Ya sea que estés buscando el último blockbuster de acción,
+    un juego indie innovador o un clásico nostálgico para revivir tus mejores recuerdos de gaming,
+    MPlay es el lugar donde tus sueños de jugador se hacen realidad.
+    Ven a visitarnos y sumérgete en el mundo emocionante de MPlay,
+    donde cada juego es una nueva aventura por descubrir.
+  </p> 
+  <h5>Te deseamos la mejor experiencia en nuestra tienda</h5>
+</div>
+
+<div class="container-fluid">
+  <div class="row text-center">
+    <div id="perfil1" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-center mb-4">
+      <div class="card pt-2" style="width: 18rem">
+        <img src="{% static 'core/img/perfil1.png' %}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Javier Castillo</h5>
+          <p class="card-text">GERENTE GENERAL</p>
+        </div>
+        <div class="card-body">
+          <a href="mailto:juan.c.bodoque@gmail.com">javier.castillo@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div id="perfil2" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-center mb-4">
+      <div class="card pt-2" style="width: 18rem">
+        <img src="{% static 'core/img/perfil3.jpg' %}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Isabel Vega</h5>
+          <p class="card-text">PRESIDENTA DE LA COMPAÑIA</p>
+        </div>
+        <div class="card-body">
+          <a href="mailto:isabel.vega@gmail.com">isabel.vega@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div id="perfil3" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-center mb-4">
+      <div class="card pt-2" style="width: 18rem">
+        <img src="{% static 'core/img/perfil4.jpg' %}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Camila Morales</h5>
+          <p class="card-text">TRABAJADORA</p>
+        </div>
+        <div class="card-body">
+          <a href="mailto:camila.morales@gmail.com">camila.morales@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main class="links_administrar">
+      <div class="nosotros_alejar">
+        <h1>ADMINISTRAR TIENDA</h1>
+        <img src="{% static 'core/img/usuario.png' %}" width="50px" alt="">
+        <button class="btn btn-primary"><a class="dropdown-item" href="{% url 'usuarios' 'crear' '0' %}"> Mantenedor de Usuarios </a></button>
+      </div>
+      <div class="nosotros_alejar">
+        <img src="{% static 'core/img/producto.png' %}" width="50px" alt="">
+        <a class="btn btn-primary" href="{% url 'productos' 'crear' 0 %}">Mantenedor de Productos</a>
+      </div>
+      <div class="nosotros_alejar">
+        <img src="{% static 'core/img/ventas.png' %}" width="50px" alt="">
+        <button class="btn btn-primary"><a class="dropdown-item" href="{% url 'ventas' %}">Mantenedor de Ventas </a></button>
+      </div>
+      <div class="nosotros_alejar">
+        <img src="{% static 'core/img/bodega.png' %}" width="50px" alt="">
+        <button class="btn btn-primary"><a class="dropdown-item" href="{% url 'bodega' %}">Mantenedor de Bodega </a></button>
+      </div>
+      <div class="nosotros_alejar">
+        {% if user.is_authenticated and user.is_superuser and user.is_active %}
+        <img src="{% static 'core/img/administrador.png' %}" width="50px" alt="">
+      <button class="btn btn-primary"><a class="dropdown-item" href="/admin"> Administrador de Django </a></button>
+        {% endif %}
+    </div>
+    </main>
+
+{% endblock content %}

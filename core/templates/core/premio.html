@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<style>
+  .card-loading {
+    display: none; /* Oculta la tarjeta mientras se está cargando */
+  }
+</style>
+
+<h1 class="text-center">¡Concursa por una prenda de vestir!</h1>
+<h1 class="text-center">Por compras superiores a $30.000 en productos ya estas participando</h1>
+<div id="fila-ropa" class="row container-fluid">
+          <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 row  col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3 text-center">
+              <div class="card card-loading" style="width: 15rem;">
+                  <img src="" style="width: 100px; margin: auto;" class="card-img-top pt-3">
+                  <div class="card-body">
+                      <h5 class="card-title">
+                        ${item.title}
+                      </h5>
+                      <h6>
+                        ${item.category}
+                      </h6>
+                      <p class="card-text">
+                        ${item.description}
+                      </p>
+                      <a class="btn btn-primary" target="_blank"
+                        href="https://www.amazon.com/s?k=${item.title}">
+                        Buscar en Amazon
+                      </a>
+                  </div>
+                </div>
+            </div> 
+    </div>
+
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'core/js/ropa.js' %}"></script>
+  
+{% endblock script %}
